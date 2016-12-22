@@ -11,7 +11,7 @@ Plugin 'scrooloose/nerdcommenter'
 Plugin 'Yggdroot/indentLine'
 Plugin 'mattn/webapi-vim'
 Plugin 'mattn/gist-vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -140,4 +140,10 @@ inoremap <expr> <Down> pumvisible() ? "\<C-E>\<Down>" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "\<C-E>\<Up>" : "\<Up>"
 
 let g:indentLine_char = "│"
-colorscheme molokai
+
+let g:gist_clip_command = 'xclip -selection clipboard'
+let g:gist_detect_filetype = 1
+
+if filereadable( expand("$HOME/.vim/bundle/molokai/colors/molokai.vim") )
+  colorscheme molokai
+endif
