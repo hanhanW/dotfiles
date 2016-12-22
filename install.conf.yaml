@@ -25,5 +25,3 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
 
-- shell:
-  - [vim +PlugInstall +qall]
