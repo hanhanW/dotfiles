@@ -12,4 +12,3 @@ git clone https://github.com/hanhanW/dotfiles ~/dotfiles
 cd ~/dotfiles
 git remote set-url --push origin git@github.com:hanhanW/dotfiles.git
 ./install
-./install-vim
