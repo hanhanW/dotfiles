@@ -1,9 +1,9 @@
 - defaults:
     link:
         relink: true
-        shell:
-            stdout:  true
-            stderr: true
+    shell:
+        stdout:  true
+        stderr: true
 
 - clean: ['~']
 
@@ -15,7 +15,9 @@
 
 - link:
     ~/.zshrc: zshrc
-    ~/.vim: vim
+    ~/.vim/bundle/Vundle.vim:
+      create: true
+      path: modules/Vundle.vim
     ~/.vimrc: vimrc
     ~/.tmux.conf: tmux.conf
     ~/.ssh/config: ssh/config
@@ -23,3 +25,5 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
 
+- shell:
+  - [vim +PlugInstall +qall]
