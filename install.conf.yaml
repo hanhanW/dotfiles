@@ -1,0 +1,25 @@
+- defaults:
+    link:
+        relink: true
+        shell:
+            stdout:  true
+            stderr: true
+
+- clean: ['~']
+
+- shell:
+  -
+    command: git submodule update --init --recursive
+    description: Installing submodules
+    stdout: true
+
+- link:
+    ~/.zshrc: zshrc
+    ~/.vim: vim
+    ~/.vimrc: vimrc
+    ~/.tmux.conf: tmux.conf
+    ~/.ssh/config: ssh/config
+    ~/.ycm_extra_conf.py: ycm_extra_conf.py
+    ~/.gitconfig: gitconfig
+    ~/.gitignore_global: gitignore_global
+

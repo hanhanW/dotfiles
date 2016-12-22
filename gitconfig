@@ -1,0 +1,10 @@
+[user]
+	name = hanhan0912
+	email = hanhan0912@gmail.com
+[color]
+    ui = auto
+[core]
+    editor = vim
+    excludesfile = ~/.gitignore
+[push]
+    default = simple
