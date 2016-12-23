@@ -131,6 +131,10 @@ alias grep='grep --color=auto'
 alias objdump='objdump -M intel'
 alias p1='ssh bbsu@ptt.cc'
 alias p2='ssh bbsu@ptt2.cc'
+alias ta='tmux at -t'
+alias tl='tmux ls'
+alias rb='ruby'
+alias py='python'
 # }}}
 
 # OTHER {{{
