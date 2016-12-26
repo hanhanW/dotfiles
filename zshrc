@@ -153,5 +153,7 @@ path=(
 rbenv() { eval "$(command rbenv init -)" && rbenv "$@"; }
 pyenv() { eval "$(command pyenv init -)" && pyenv "$@"; }
 
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 # }}}
 
