@@ -1,5 +1,5 @@
 [user]
-	name = hanhan0912
+	name = hanhanW
 	email = hanhan0912@gmail.com
 [color]
     ui = auto
@@ -8,3 +8,5 @@
     excludesfile = ~/.gitignore_global
 [push]
     default = simple
+[github]
+	user = hanhanW
