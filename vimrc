@@ -46,6 +46,34 @@ set colorcolumn=+1
 set fileencodings=utf8
 set encoding=utf8
 
+" Move swap/undo files. {{{
+" Save your swp files to a less annoying place than the current directory.
+" If you have .vim-swap in the current directory, it'll use that.
+" Otherwise it saves it to ~/.vim/swap, ~/tmp or .
+if isdirectory($HOME . '/.vim/swap') == 0
+  :silent !mkdir -p ~/.vim/swap >/dev/null 2>&1
+endif
+set directory=./.vim-swap//
+set directory+=~/.vim/swap//
+set directory+=~/tmp//
+set directory+=.
+
+if exists("+undofile")
+  " undofile - This allows you to use undos after exiting and restarting
+  " This, like swap and backups, uses .vim-undo first, then ~/.vim/undo,
+  " then .
+  " :help undo-persistence
+  " This is only present in 7.3+
+  if isdirectory($HOME . '/.vim/undo') == 0
+    :silent !mkdir -p ~/.vim/undo > /dev/null 2>&1
+  endif
+  set undodir=./.vim-undo//
+  set undodir+=~/.vim/undo//
+  set undodir+=.
+  set undofile
+endif
+" }}}
+
 " => Map leader settings {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
  "Set map leader to " "
@@ -61,13 +89,15 @@ autocmd! bufwritepost .vimrc source %
 
 highlight Normal ctermbg=None
 
-autocmd BufNewFile *.rb 0r ~/Templates/default.rb
+"autocmd BufNewFile *.cpp 0r ~/Templates/default.cpp
+"autocmd BufNewFile *.rb 0r ~/Templates/default.rb
 
 autocmd FileType Makefile setlocal noexpandtab
-autocmd FileType cpp se makeprg=g++\ -g\ -Wall\ -Wshadow\ -O2\ -std=c++0x\ -DDARKHH\ -o\ %<\ %
+autocmd FileType cpp se makeprg=g++\ -g\ -Wall\ -Wshadow\ -O2\ -std=c++14\ -DDARKHH\ -o\ %<\ %
 autocmd FileType c se makeprg=gcc\ -g\ -Wall\ -Wshadow\ -O2\ -std=c11\ -o\ %<\ %
 autocmd FileType tex se syntax=tex makeprg=xelatex\ -interaction=nonstopmode\ %
 autocmd FileType tex let g:indentLine_enabled=0
+autocmd FileType json let g:indentLine_enabled=0
 
 set foldmarker={{{,}}}
 set foldmethod=marker
