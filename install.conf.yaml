@@ -25,5 +25,7 @@
     ~/.ycm_extra_conf.py: ycm_extra_conf.py
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
+    ~/.gdbinit: gdbinit
+    ~/.gdb: gdb
 - shell:
   - [ ~/.fzf/install --key-bindings --completion --update-rc ]
