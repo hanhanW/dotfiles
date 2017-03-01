@@ -18,7 +18,7 @@
     ~/.fzf: modules/fzf
     ~/.vim/autoload/plug.vim:
       create: true
-      path: modules/vim-plug
+      path: modules/vim-plug/plug.vim
     ~/.vimrc: vimrc
     ~/.tmux.conf: tmux.conf
     ~/.ssh/config: ssh/config
