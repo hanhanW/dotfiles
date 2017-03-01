@@ -1,20 +1,16 @@
-"vundle {{{
-set nocompatible              " be iMproved, required
-filetype off                  " required
+"vim-plug {{{
+call plug#begin('~/.vim/plugged')
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+Plug 'hanhanW/molokai'
+Plug 'junegunn/vim-easy-align'
+Plug 'scrooloose/nerdcommenter'
+Plug 'Yggdroot/indentLine'
+Plug 'Valloric/YouCompleteMe'
+"Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'vim-ruby/vim-ruby'
 
-Plugin 'gmarik/Vundle.vim'
-Plugin 'hanhanW/molokai'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'Yggdroot/indentLine'
-Plugin 'mattn/webapi-vim'
-Plugin 'mattn/gist-vim'
-"Plugin 'Valloric/YouCompleteMe'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 " }}}
 
 filetype indent plugin on
@@ -174,6 +170,6 @@ let g:indentLine_char = "│"
 let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
 
-if filereadable( expand("$HOME/.vim/bundle/molokai/colors/molokai.vim") )
+if filereadable( expand("$HOME/.vim/plugged/molokai/colors/molokai.vim") )
   colorscheme molokai
 endif

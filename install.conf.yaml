@@ -16,9 +16,9 @@
 - link:
     ~/.zshrc: zshrc
     ~/.fzf: modules/fzf
-    ~/.vim/bundle/Vundle.vim:
+    ~/.vim/autoload/plug.vim:
       create: true
-      path: modules/Vundle.vim
+      path: modules/vim-plug
     ~/.vimrc: vimrc
     ~/.tmux.conf: tmux.conf
     ~/.ssh/config: ssh/config
@@ -26,5 +26,4 @@
     ~/.gitconfig: gitconfig
     ~/.gitignore_global: gitignore_global
 - shell:
-  - [ vim +PluginInstall +qall &>/dev/null ]
   - [ ~/.fzf/install --key-bindings --completion --update-rc ]
