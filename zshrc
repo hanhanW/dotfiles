@@ -92,7 +92,7 @@ setopt hist_lex_words
 setopt inc_append_history
 setopt interactivecomments
 setopt mark_dirs
-setopt menu_complete
+#setopt menu_complete
 setopt multios
 setopt prompt_subst
 setopt pushd_ignore_dups
@@ -137,6 +137,7 @@ alias py='python'
 # }}}
 
 # OTHER {{{
+compdef mosh=ssh
 
 path=(
     ~/bin
