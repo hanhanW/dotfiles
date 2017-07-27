@@ -6,7 +6,7 @@ Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
 Plug 'Valloric/YouCompleteMe'
-Plug 'junegunn/fzf.vim'
+"Plug 'junegunn/fzf.vim'
 Plug 'vim-ruby/vim-ruby'
 
 call plug#end()
@@ -15,14 +15,14 @@ call plug#end()
 filetype indent plugin on
 
 syntax on
-set autoread                
+set autoread
 set autoindent                  " (ai) turn on auto-indenting (great for programers)
 set showmatch                   " (sm) briefly jump to matching bracket when inserting one
 set number                      " (nu) show line numbers
 set ruler                       " (ru) show the cursor position at all times
 set incsearch                   " (is) highlights what you are searching for as you type
 set hlsearch                    " (hls) highlights all instances of the last searched string
-set ignorecase                  " (ic) ignores case in search patterns 
+set ignorecase                  " (ic) ignores case in search patterns
 set smartcase                   " (scs) don't ignore case when the search pattern has uppercase
 set showcmd                     " (sc) display an incomplete command in the lower right
 set history=10000
@@ -84,7 +84,7 @@ autocmd! bufwritepost .vimrc source %
 
 highlight Normal ctermbg=None
 
-"autocmd BufNewFile *.cpp 0r ~/Templates/default.cpp
+autocmd BufNewFile *.cpp 0r ~/Templates/default.cpp
 "autocmd BufNewFile *.rb 0r ~/Templates/default.rb
 
 autocmd FileType Makefile setlocal noexpandtab
@@ -156,7 +156,7 @@ map <leader>c<space> <plug>NERDCommenterToggle
 
 " --- YCM plugin --- {{{
 let g:ycm_confirm_extra_conf = 0
-set completeopt-=preview 
+set completeopt-=preview
 let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
 " }}}
