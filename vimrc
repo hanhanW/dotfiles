@@ -2,12 +2,14 @@
 call plug#begin('~/.vim/plugged')
 
 Plug 'hanhanW/molokai'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
 Plug 'Valloric/YouCompleteMe'
-"Plug 'junegunn/fzf.vim'
 Plug 'vim-ruby/vim-ruby'
+Plug 'hanhanW/vim-trailing-whitespace'
 
 call plug#end()
 " }}}
@@ -138,6 +140,9 @@ if $TERM =~ '^screen-256color'
     map! <Esc>OF <End>
 endif
 
+nnoremap ; :
+vnoremap ; :
+nnoremap <leader>t :tabe<Space>
 nnoremap <F7> <ESC>:wa<CR>:mak<CR>
 imap <F7> <ESC>:wa<CR>:mak<CR>
 nnoremap <F8> :call QFSwitch()<CR>
