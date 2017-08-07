@@ -15,7 +15,6 @@
 
 - link:
     ~/.zshrc: zshrc
-    ~/.fzf: modules/fzf
     ~/.vim/autoload/plug.vim:
       create: true
       path: modules/vim-plug/plug.vim
@@ -27,5 +26,4 @@
     ~/.gdbinit: gdbinit
     ~/.gdb: gdb
 - shell:
-  - [ ~/.fzf/install --key-bindings --completion --update-rc ]
   - [vim +PlugInstall +qall]

@@ -1,12 +1,6 @@
 [submodule "modules/dotbot"]
 	path = modules/dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "modules/Vundle.vim"]
-	path = modules/Vundle.vim
-	url = https://github.com/VundleVim/Vundle.vim.git
-[submodule "modules/fzf"]
-	path = modules/fzf
-	url = https://github.com/junegunn/fzf.git
 [submodule "modules/vim-plug"]
 	path = modules/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
