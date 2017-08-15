@@ -9,6 +9,8 @@ Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
 Plug 'Valloric/YouCompleteMe'
 Plug 'vim-ruby/vim-ruby'
+Plug 'sheerun/vim-polyglot'
+Plug 'rhysd/clever-f.vim'
 Plug 'hanhanW/vim-trailing-whitespace'
 
 call plug#end()
@@ -173,6 +175,8 @@ let g:indentLine_char = "│"
 
 let g:gist_clip_command = 'xclip -selection clipboard'
 let g:gist_detect_filetype = 1
+
+let g:polyglot_disabled = ['python']
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
