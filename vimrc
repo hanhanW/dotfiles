@@ -12,6 +12,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'sheerun/vim-polyglot'
 Plug 'rhysd/clever-f.vim'
 Plug 'hanhanW/vim-trailing-whitespace'
+Plug 'itchyny/lightline.vim'
 
 call plug#end()
 " }}}
@@ -168,15 +169,26 @@ let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
 " }}}
 
+" --- fzf plugin --- {{{
+nnoremap <leader>ff <ESC>:FZF<CR>
+nnoremap <leader>bf <ESC>:Buffers<CR>
+" Enable per-command history.
+" CTRL-N and CTRL-P will be automatically bound to next-history and
+" previous-history instead of down and up. If you don't like the change,
+" explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
+let g:fzf_history_dir = '~/.local/share/fzf-history'
+" }}}
+
 inoremap <expr> <Down> pumvisible() ? "\<C-E>\<Down>" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "\<C-E>\<Up>" : "\<Up>"
 
 let g:indentLine_char = "│"
 
-let g:gist_clip_command = 'xclip -selection clipboard'
-let g:gist_detect_filetype = 1
+let g:polyglot_disabled = ['python', 'cpp']
 
-let g:polyglot_disabled = ['python']
+let g:lightline = {
+      \ 'colorscheme': 'wombat',
+      \ }
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
 xmap ga <Plug>(EasyAlign)
