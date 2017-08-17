@@ -177,6 +177,10 @@ alias ....='cd ../..'
 alias ......='cd ../../..'
 
 # Git aliases
+git_branch() {
+  (command git symbolic-ref -q HEAD || command git name-rev --name-only --no-undefined --always HEAD) 2>/dev/null
+}
+
 alias g='git'
 alias ga='git add'
 alias gaa='git add --all'
