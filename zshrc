@@ -50,6 +50,8 @@ export PAGER='less'
 export LESS='-R'
 export LS_COLORS='di=1;34:ln=1;35:so=1;32:pi=1;33:ex=1;31:bd=34;46:cd=34;43:su=30;41:sg=30;46:tw=30;42:ow=30;43'
 export TERM=screen-256color
+export FZF_DEFAULT_OPTS='--height 40% --no-reverse'
+
 # }}}
 
 # prompt {{{
@@ -79,8 +81,12 @@ HISTFILE=~/.histfile
 HISTSIZE=65536
 SAVEHIST=65536
 
+unsetopt menu_complete
+setopt noflowcontrol
+
 setopt always_to_end
 setopt append_history
+setopt auto_menu
 setopt auto_name_dirs
 setopt auto_pushd
 setopt autocd
@@ -89,10 +95,10 @@ setopt correct
 setopt extended_glob
 setopt extended_history
 setopt hist_lex_words
+setopt hist_ignore_dups
 setopt inc_append_history
 setopt interactivecomments
 setopt mark_dirs
-#setopt menu_complete
 setopt multios
 setopt prompt_subst
 setopt pushd_ignore_dups
@@ -113,6 +119,35 @@ zle -N self-insert url-quote-magic
 
 # }}}
 
+# Completions {{{
+# Important
+zstyle ':completion:*:default' menu yes=long select=2
+
+# Completing Grouping
+zstyle ':completion:*:options' description 'yes'
+zstyle ':completion:*:descriptions' format '%F{226}Completing %F{214}%d%f'
+zstyle ':completion:*' group-name ''
+
+# Completing misc
+zstyle ':completion:*' matcher-list '' 'm:{[:lower:]}={[:upper:]} r:|[._-]=* r:|=*' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}'
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' completer _expand _complete _match _prefix _approximate _list _history
+zstyle ':completion:*' expand prefix suffix
+zstyle ':completion:*:*files' ignored-patterns '*?.o' '*?~' '*\#'
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*:*:-subscript-:*' tag-order indexes parameters
+zstyle ':completion:*' select-prompt %SScrolling active: current selection at %p%s
+
+# Directory
+zstyle ':completion:*:cd:*' ignore-parents parent pwd
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+# default: --
+zstyle ':completion:*' list-separator '-->'
+zstyle ':completion:*:manuals' separate-sections true
+
+# }}}
+
 # ALIAS {{{
 
 if ls --color -d . &>/dev/null 2>&1; then
@@ -126,7 +161,7 @@ alias l='ls -F'
 alias ll='ls -lhF'
 alias la='ls -lhaF'
 alias cls='clear'
-alias grep='grep --color=auto' 
+alias grep='grep --color=auto'
 alias objdump='objdump -M intel'
 alias p1='ssh bbsu@ptt.cc'
 alias p2='ssh bbsu@ptt2.cc'
@@ -134,6 +169,34 @@ alias ta='tmux at -t'
 alias tl='tmux ls'
 alias rb='ruby'
 alias py='python'
+
+# Change Directory aliases
+alias -- -='cd -'
+alias ..='cd ..'
+alias ....='cd ../..'
+alias ......='cd ../../..'
+
+# Git aliases
+alias g='git'
+alias ga='git add'
+alias gaa='git add --all'
+alias gb='git branch'
+alias gc='git commit -v'
+alias gca='git commit -a -v'
+alias gcb='git checkout -b'
+alias gcm='git checkout master'
+alias gco='git checkout'
+alias gd='git diff'
+alias gf='git fetch'
+alias gl='git pull origin $(git_branch)'
+alias glg='git log'
+alias gm='git merge'
+alias gmm='git merge master'
+alias gmv='git mv'
+alias gp='git push origin $(git_branch)'
+alias grm='git rm'
+alias gst='git status'
+
 # }}}
 
 # OTHER {{{
@@ -154,7 +217,38 @@ rbenv() { eval "$(command rbenv init -)" && rbenv "$@"; }
 pyenv() { eval "$(command pyenv init -)" && pyenv "$@"; }
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-export FZF_DEFAULT_OPTS='--height 40% --no-reverse'
+
+# Colorful man pages
+man() {
+  env \
+    LESS_TERMCAP_md=$'\e[1;36m' \
+    LESS_TERMCAP_me=$'\e[0m' \
+    LESS_TERMCAP_se=$'\e[0m' \
+    LESS_TERMCAP_so=$'\e[1;40;92m' \
+    LESS_TERMCAP_ue=$'\e[0m' \
+    LESS_TERMCAP_us=$'\e[1;32m' \
+    man "$@"
+}
+
+ssh() {
+  if [ -z ${TMUX+x} ]; then
+    command ssh "$@"
+  else
+    tmux rename-window "$*"
+    command ssh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  fi
+}
+
+mosh() {
+  if [ -z ${TMUX+x} ]; then
+    command mosh "$@"
+  else
+    tmux rename-window "$*"
+    command mosh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  fi
+}
 
 # }}}
 
