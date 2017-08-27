@@ -45,6 +45,8 @@ set textwidth=100               " (tw) number of columns before an automatic lin
 set colorcolumn=+1
 set fileencodings=utf8
 set encoding=utf8
+set background=dark
+set pastetoggle=<F2>
 
 " Move swap/undo files. {{{
 " Save your swp files to a less annoying place than the current directory.
@@ -85,17 +87,17 @@ runtime .vimrc_leader
 " }}}
 
 " auto reload vimrc
-autocmd! bufwritepost .vimrc source %
+autocmd! BufWritePost . source %
 
 highlight Normal ctermbg=None
 
 autocmd BufNewFile *.cpp 0r ~/Templates/default.cpp
-"autocmd BufNewFile *.rb 0r ~/Templates/default.rb
+autocmd BufNewFile exp.rb 0r ~/Templates/exp.rb
 
 autocmd FileType Makefile setlocal noexpandtab
-autocmd FileType cpp se makeprg=g++\ -g\ -Wall\ -Wshadow\ -O2\ -std=c++14\ -DDARKHH\ -o\ %<\ %
-autocmd FileType c se makeprg=gcc\ -g\ -Wall\ -Wshadow\ -O2\ -std=c11\ -o\ %<\ %
-autocmd FileType tex se syntax=tex makeprg=xelatex\ -interaction=nonstopmode\ %
+autocmd FileType cpp set makeprg=g++\ -g\ -Wall\ -Wshadow\ -O2\ -std=c++14\ -DDARKHH\ -o\ %<\ %
+autocmd FileType c set makeprg=gcc\ -g\ -Wall\ -Wshadow\ -O2\ -std=c11\ -o\ %<\ %
+autocmd FileType tex set syntax=tex makeprg=xelatex\ -interaction=nonstopmode\ %
 autocmd FileType tex let g:indentLine_enabled=0
 autocmd FileType json let g:indentLine_enabled=0
 
@@ -183,9 +185,7 @@ inoremap <expr> <Down> pumvisible() ? "\<C-E>\<Down>" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "\<C-E>\<Up>" : "\<Up>"
 
 let g:indentLine_char = "│"
-
 let g:polyglot_disabled = ['python', 'cpp']
-
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
@@ -198,4 +198,6 @@ nmap ga <Plug>(EasyAlign)
 
 if filereadable( expand("$HOME/.vim/plugged/molokai/colors/molokai.vim") )
   colorscheme molokai
+else
+  colorscheme torte
 endif

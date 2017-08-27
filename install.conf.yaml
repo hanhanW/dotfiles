@@ -26,4 +26,4 @@
     ~/.gdbinit: gdbinit
     ~/.gdb: gdb
 - shell:
-  - [vim +PlugInstall +qall]
+  - [vim +PlugInstall +qall 2> /dev/null]
