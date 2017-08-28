@@ -28,5 +28,6 @@
     ~/.gitignore_global: gitignore_global
     ~/.gdbinit: gdbinit
     ~/.gdb: gdb
+    ~/.pryrc: pryrc
 - shell:
   - [vim +PlugInstall +qall 2> /dev/null]
