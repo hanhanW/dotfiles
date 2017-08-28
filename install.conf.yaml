@@ -18,6 +18,9 @@
     ~/.vim/autoload/plug.vim:
       create: true
       path: modules/vim-plug/plug.vim
+    ~/bin/z.sh:
+      create: true
+      path: bin/z.sh
     ~/.vimrc: vimrc
     ~/.tmux.conf: tmux.conf
     ~/.ycm_extra_conf.py: ycm_extra_conf.py
