@@ -162,8 +162,8 @@ alias la='ls -lhaF'
 alias cls='clear'
 alias grep='grep --color=auto'
 alias objdump='objdump -M intel'
-alias p1='ssh bbsu@ptt.cc'
-alias p2='ssh bbsu@ptt2.cc'
+alias p1='ssh ptt'
+alias p2='ssh ptt2'
 alias ta='tmux at -t'
 alias tl='tmux ls'
 alias rb='ruby'
@@ -206,7 +206,7 @@ alias gst='git status'
 compdef mosh=ssh
 
 path=(
-    ~/bin
+    $HOME/bin
     $HOME/.rbenv/bin
     $HOME/.rbenv/shims
     $HOME/.pyenv/bin
@@ -220,7 +220,7 @@ rbenv() { eval "$(command rbenv init -)" && rbenv "$@"; }
 pyenv() { eval "$(command pyenv init -)" && pyenv "$@"; }
 
 try_source() { [[ -f $1 ]] && source $1; }
-try_source ~/bin/z.sh
+try_source ~/bin/ddb.sh
 try_source ~/.fzf.zsh
 
 # Colorful man pages
@@ -241,16 +241,6 @@ ssh() {
   else
     tmux rename-window "$*"
     command ssh "$@"
-    tmux set-window-option automatic-rename "on" 1>/dev/null
-  fi
-}
-
-mosh() {
-  if [ -z ${TMUX+x} ]; then
-    command mosh "$@"
-  else
-    tmux rename-window "$*"
-    command mosh "$@"
     tmux set-window-option automatic-rename "on" 1>/dev/null
   fi
 }
