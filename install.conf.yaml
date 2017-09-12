@@ -37,4 +37,12 @@
 # pryrc
     ~/.pryrc: config/pryrc
 - shell:
-  - [vim +PlugInstall +qall 2> /dev/null]
+  -
+    command: setup/main.sh
+    description: Running setup script
+    stdin: true
+    stdout: true
+    stderr: true
+  -
+    command: [vim +PlugInstall +qall 2> /dev/null]
+    description: Installing vim plugins
