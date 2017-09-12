@@ -185,7 +185,7 @@ inoremap <expr> <Down> pumvisible() ? "\<C-E>\<Down>" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "\<C-E>\<Up>" : "\<Up>"
 
 let g:indentLine_char = "│"
-let g:polyglot_disabled = ['python', 'cpp']
+let g:polyglot_disabled = ['python', 'c/c++', 'c++11']
 let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
