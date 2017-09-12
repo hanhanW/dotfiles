@@ -8,6 +8,13 @@ if ! command -v git >/dev/null 2>&1; then
   sudo apt-get update
   sudo apt-get -y install git
 fi
+
+if ! command -v python >/dev/null 2>&1; then
+  echo $'\e[1;33mpython not installed, installing...\e[m'
+  sudo apt-get update
+  sudo apt-get -y install python
+fi
+
 git clone https://github.com/hanhanW/dotfiles ~/dotfiles
 cd ~/dotfiles
 git remote set-url --push origin git@github.com:hanhanW/dotfiles.git
