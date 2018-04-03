@@ -155,6 +155,7 @@ if ls --color -d . &>/dev/null 2>&1; then
     alias ls='ls -G'
 fi
 
+alias v='vim'
 alias vi='vim'
 alias l='ls -F'
 alias ll='ls -lhF'
