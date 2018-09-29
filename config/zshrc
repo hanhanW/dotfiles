@@ -224,6 +224,8 @@ pyenv() { eval "$(command pyenv init -)" && pyenv "$@"; }
 try_source() { [[ -f $1 ]] && source $1; }
 try_source ~/bin/common/ddb.sh
 try_source ~/.fzf.zsh
+try_source ~/dotfiles/modules/zsh-autosuggestions/zsh-autosuggestions.zsh
+try_source ~/.zshrc_local
 
 # Colorful man pages
 man() {
