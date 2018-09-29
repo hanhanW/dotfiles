@@ -1,21 +1,24 @@
 "vim-plug {{{
 call plug#begin('~/.vim/plugged')
 
+Plug 'tpope/vim-sensible'
 Plug 'hanhanW/molokai'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
-Plug 'Valloric/YouCompleteMe'
+"Plug 'Valloric/YouCompleteMe'
 Plug 'vim-ruby/vim-ruby'
 Plug 'sheerun/vim-polyglot'
 Plug 'rhysd/clever-f.vim'
 Plug 'hanhanW/vim-trailing-whitespace'
 Plug 'itchyny/lightline.vim'
-
-Plug 'mattn/webapi-vim'
-Plug 'mattn/gist-vim'
+Plug 'Konfekt/FastFold'
+Plug 'airblade/vim-gitgutter'
+Plug 'mbbill/undotree'
+Plug 'mhinz/vim-signify'
+Plug 'mbbill/undotree'
 
 call plug#end()
 " }}}
@@ -35,6 +38,7 @@ set smartcase                   " (scs) don't ignore case when the search patter
 set showcmd                     " (sc) display an incomplete command in the lower right
 set history=10000
 set nowrap
+set wildmenu
 set expandtab
 set mouse=a
 set backspace=indent,eol,start
@@ -43,13 +47,15 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 set laststatus=2
-set textwidth=100               " (tw) number of columns before an automatic line break is inserted
+set textwidth=80                " (tw) number of columns before an automatic line break is inserted
                                 " (see formatoptions)
 set colorcolumn=+1
 set fileencodings=utf8
 set encoding=utf8
 set background=dark
 set pastetoggle=<F2>
+
+inoremap jk <Esc>
 
 " Move swap/undo files. {{{
 " Save your swp files to a less annoying place than the current directory.
@@ -94,11 +100,11 @@ autocmd! BufWritePost . source %
 
 highlight Normal ctermbg=None
 
-autocmd BufNewFile *.cpp 0r ~/Templates/default.cpp
-autocmd BufNewFile exp.rb 0r ~/Templates/exp.rb
+"autocmd BufNewFile *.cpp 0r ~/Templates/default.cpp
+"autocmd BufNewFile exp.rb 0r ~/Templates/exp.rb
 
 autocmd FileType Makefile setlocal noexpandtab
-autocmd FileType cpp set makeprg=g++\ -g\ -Wall\ -Wshadow\ -O3\ -std=c++14\ -DDARKHH\ -o\ %<\ %
+autocmd FileType cpp set makeprg=g++\ -g\ -Wall\ -Wshadow\ -O2\ -std=c++14\ -DDARKHH\ -o\ %<\ %
 autocmd FileType c set makeprg=gcc\ -g\ -Wall\ -Wshadow\ -O2\ -std=c11\ -o\ %<\ %
 autocmd FileType tex set syntax=tex makeprg=xelatex\ -interaction=nonstopmode\ %
 autocmd FileType tex let g:indentLine_enabled=0
@@ -169,19 +175,24 @@ map <leader>c<space> <plug>NERDCommenterToggle
 
 " --- YCM plugin --- {{{
 let g:ycm_confirm_extra_conf = 0
-set completeopt-=preview
+"set completeopt-=preview
 let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
+let g:ycm_autoclose_preview_window_after_completion = 0
 " }}}
 
 " --- fzf plugin --- {{{
-nnoremap <leader>ff <ESC>:FZF<CR>
-nnoremap <leader>bf <ESC>:Buffers<CR>
+"nnoremap <leader>ff <ESC>:FZF<CR>
+"nnoremap <leader>bf <ESC>:Buffers<CR>
 " Enable per-command history.
 " CTRL-N and CTRL-P will be automatically bound to next-history and
 " previous-history instead of down and up. If you don't like the change,
 " explicitly bind the keys to down and up in your $FZF_DEFAULT_OPTS.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+" }}}
+
+" undotree {{{
+nnoremap <Leader>u :UndotreeToggle<CR>
 " }}}
 
 inoremap <expr> <Down> pumvisible() ? "\<C-E>\<Down>" : "\<Down>"
@@ -193,14 +204,15 @@ let g:lightline = {
       \ 'colorscheme': 'wombat',
       \ }
 
-" Start interactive EasyAlign in visual mode (e.g. vipga)
-xmap ga <Plug>(EasyAlign)
-
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
+xmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader>a <Plug>(EasyAlign)
 
 if filereadable( expand("$HOME/.vim/plugged/molokai/colors/molokai.vim") )
   colorscheme molokai
 else
   colorscheme torte
+endif
+
+if filereadable( expand("$HOME/.lvimrc") )
+  source ~/.lvimrc
 endif
