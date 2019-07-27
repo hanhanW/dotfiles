@@ -7,3 +7,6 @@
 [submodule "modules/zsh-autosuggestionsg"]
 	path = modules/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "modules/zsh-autosuggestions"]
+	path = modules/zsh-autosuggestions
+	url = git://https://github.com/zsh-users/zsh-autosuggestions.git
