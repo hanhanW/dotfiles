@@ -195,6 +195,36 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 nnoremap <Leader>u :UndotreeToggle<CR>
 " }}}
 
+" Paste {{{
+" http://stackoverflow.com/questions/5585129
+
+if &term =~ "xterm.*" || exists("$TMUX")
+
+    " enable/disable bracketed paste mode
+    let &t_ti = &t_ti . "\e[?2004h"
+    let &t_te = "\e[?2004l" . &t_te
+
+    function! XTermPasteBegin(ret)
+        " stop paste mode when bracketed end
+        set pastetoggle=<f14>
+        " start paste mode
+        set paste
+        " extra command code to which it'll be mapped
+        return a:ret
+    endfunction
+
+    nnoremap <expr> <f13> XTermPasteBegin("i")
+    inoremap <expr> <f13> XTermPasteBegin("")
+    vnoremap <expr> <f13> XTermPasteBegin("c")
+
+    " do nothing when we're in command mode
+    cnoremap <f13> <nop>
+    cnoremap <f14> <nop>
+
+endif
+
+" }}}
+
 inoremap <expr> <Down> pumvisible() ? "\<C-E>\<Down>" : "\<Down>"
 inoremap <expr> <Up> pumvisible() ? "\<C-E>\<Up>" : "\<Up>"
 
