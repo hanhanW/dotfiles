@@ -9,4 +9,4 @@
 	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "modules/zsh-autosuggestions"]
 	path = modules/zsh-autosuggestions
-	url = git://https://github.com/zsh-users/zsh-autosuggestions.git
+	url = https://github.com/zsh-users/zsh-autosuggestions

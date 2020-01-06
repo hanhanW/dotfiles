@@ -196,7 +196,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 nnoremap <Leader>u :UndotreeToggle<CR>
 " }}}
 
-" Paste {{{ ------------------------------------------------------------------
+" Paste {{{
 " http://stackoverflow.com/questions/5585129
 
 if &term =~ "xterm.*" || exists("$TMUX")
@@ -222,7 +222,7 @@ if &term =~ "xterm.*" || exists("$TMUX")
     cnoremap <f13> <nop>
     cnoremap <f14> <nop>
 
-  endif
+endif
 
 " }}}
 
