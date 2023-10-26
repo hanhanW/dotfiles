@@ -8,7 +8,9 @@ Plug 'junegunn/fzf.vim'
 Plug 'junegunn/vim-easy-align'
 Plug 'scrooloose/nerdcommenter'
 Plug 'Yggdroot/indentLine'
-"Plug 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
+Plug 'jremmen/vim-ripgrep'
+Plug 'lotabout/skim', { 'dir': '~/.skim', 'do': './install' }
 Plug 'vim-ruby/vim-ruby'
 Plug 'sheerun/vim-polyglot'
 Plug 'rhysd/clever-f.vim'
@@ -175,7 +177,16 @@ map <leader>c<space> <plug>NERDCommenterToggle
 " }}}
 
 " --- YCM plugin --- {{{
+let g:ycm_global_ycm_extra_conf = ''
 let g:ycm_confirm_extra_conf = 0
+let g:ycm_clangd_uses_ycmd_caching = 0
+let g:ycm_clangd_binary_path = exepath("clangd")
+
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gt :YcmCompleter GoTo<CR>
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gi :YcmCompleter GoToInclude<CR>
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gd :YcmCompleter GoToDefinition<CR>
+autocmd FileType c,cpp,objc,objcpp nnoremap <Leader>gr :YcmCompleter GoToReferences<CR>
+
 "set completeopt-=preview
 let g:ycm_key_list_select_completion = ['<TAB>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>']
@@ -237,6 +248,8 @@ let g:lightline = {
 
 xmap <Leader>a <Plug>(EasyAlign)
 nmap <Leader>a <Plug>(EasyAlign)
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>f :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>f :ClangFormat<CR>
 
 if filereadable( expand("$HOME/.vim/plugged/molokai/colors/molokai.vim") )
   colorscheme molokai

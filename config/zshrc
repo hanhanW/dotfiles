@@ -251,3 +251,4 @@ ssh() {
 
 # }}}
 
+bindkey '^j'   forward-word
