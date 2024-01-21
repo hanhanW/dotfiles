@@ -12,7 +12,7 @@ fi
 if ! command -v python >/dev/null 2>&1; then
   echo $'\e[1;33mpython not installed, installing...\e[m'
   sudo apt-get update
-  sudo apt-get -y install python
+  sudo apt-get -y install python-is-python3
 fi
 
 git clone https://github.com/hanhanW/dotfiles ~/dotfiles
