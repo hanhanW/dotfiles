@@ -1,5 +1,3 @@
-# vim: syntax=zsh:
-
 # KEY {{{
 
 zle-line-init () {
@@ -155,8 +153,8 @@ if ls --color -d . &>/dev/null 2>&1; then
     alias ls='ls -G'
 fi
 
-alias v='vim'
-alias vi='vim'
+alias v='nvim'
+alias vi='nvim'
 alias l='ls -F'
 alias ll='ls -lhF'
 alias la='ls -lhaF'
@@ -169,6 +167,7 @@ alias ta='tmux at -t'
 alias tl='tmux ls'
 alias rb='ruby'
 alias py='python'
+alias nodejs='node'
 
 # Change Directory aliases
 alias -- -='cd -'
