@@ -11,7 +11,7 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-map("n", "<Leader>nt", ":tabe ")
+map("n", "<Leader>t", ":tabe ")
 map("n", "<Leader>v", ":vsp ")
 map("n", "<Tab>", ":tabnext<CR> ", { desc = "Go to next tab" })
 map("n", "<S-Tab>", ":tabprevious<CR> ", { desc = "Go to previous tab" })

@@ -63,7 +63,7 @@ return {
     cmd = { 'Neotree' },
     keys = {
       {
-        '<Leader>t',
+        '<Leader><Tab>',
         function()
           require('neo-tree.command').execute({
             action = 'focus',
