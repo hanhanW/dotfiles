@@ -41,6 +41,15 @@ opt.showcmd = true        -- Show (partial) command in the last line of the scre
 opt.foldenable = true     -- Enable code folding.
 opt.foldmethod = "marker" -- Set fold method to marker.
 
+-- Prioritize lsp diagnostics over other sources like mhinz/vim-signify.
+vim.diagnostic.config({
+  virtual_text = false,
+  signs = true,
+  underline = true,
+  update_in_insert = false,
+  severity_sort = true,
+})
+
 -- Disable auto wrap if filetype is mlir.
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "mlir",
@@ -68,4 +77,4 @@ opt.undofile = true
 if vim.fn.isdirectory(vim.fn.expand("~/.local/share/nvim/undo")) == 0 then
   vim.fn.mkdir(vim.fn.expand("~/.local/share/nvim/undo"), "p")
 end
-opt.undodir = vim.fn.expand("~/.local/share/nvim/undo")
+opt.undodir = { vim.fn.expand("~/.local/share/nvim/undo"), vim.fn.expand("~/tmp//") }
