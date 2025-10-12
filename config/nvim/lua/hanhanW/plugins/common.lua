@@ -16,6 +16,10 @@ return {
   -- A plugin that shows a git diff in the sign column.
   {
     'mhinz/vim-signify',
+  },
+  -- A Git wrapper so awesome, it should be illegal.
+  {
+    'tpope/vim-fugitive',
     event = 'VeryLazy',
   },
   -- A plugin to enhance the f and t motions in Vim.
