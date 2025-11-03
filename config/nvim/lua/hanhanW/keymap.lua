@@ -11,8 +11,8 @@ end
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-map("n", "<Leader>t", ":tabe ")
-map("n", "<Leader>v", ":vsp ")
+map("n", "<Leader>t", ":tabe ", { desc = "New tab" })
+map("n", "<Leader>\\", ":vsp ", { desc = "Vertical split" })
 map("n", "<Tab>", ":tabnext<CR> ", { desc = "Go to next tab" })
 map("n", "<S-Tab>", ":tabprevious<CR> ", { desc = "Go to previous tab" })
 map("i", "jk", "<Esc>", { desc = "Exit insert mode" })
@@ -36,16 +36,16 @@ map("v", "<", "<gv")
 map("v", ">", ">gv")
 
 -- Make +/- be increasing/decreasing the number.
-map("n", "+", "<C-a>")
-map("n", "-", "<C-x>")
+map("n", "+", "<C-a>", { desc = "Increase number under cursor" })
+map("n", "-", "<C-x>", { desc = "Decrease number under cursor" })
 
 -- Tmux uses <C-a>. Let's use <C-b> instead.
 map("i", "<C-b>", "<C-a>")
 
-simap("n", "<Leader>/", "<Cmd>nohl<CR>")
-simap("n", "<Leader>w", "<Cmd>w!<CR>")
-simap("n", "<Leader>q", "<Cmd>bdelete<CR>")
-simap("n", "<Leader><Leader>", "<Cmd>b #<CR>")
+simap("n", "<Leader>/", "<Cmd>nohl<CR>", { desc = "Clear search highlight" })
+simap("n", "<Leader>w", "<Cmd>w!<CR>", { desc = "Save file" })
+simap("n", "<Leader>q", "<Cmd>bdelete<CR>", { desc = "Close buffer" })
+simap("n", "<Leader><Leader>", "<Cmd>b #<CR>", { desc = "Switch to last buffer" })
 
 map({ "n", "x" }, "<Find>", "0")
 map({ "i", "c" }, "<Find>", "<Home>")
