@@ -11,8 +11,9 @@ local function fzf_config()
   })
   fzf.register_ui_select()
 
-  local map = function(lhs, rhs)
-    vim.keymap.set("n", lhs, rhs)
+  -- lua default desciprtion to nil if not provided.
+  local map = function(mapping, func, description --[[@as string|nil]])
+    vim.keymap.set("n", mapping, func, { desc = description })
   end
 
   local lookupFilesFromGitRoot = function()
@@ -29,12 +30,12 @@ local function fzf_config()
   map("<Leader>ff", function()
     vim.cmd("tabnew")
     fzf.files()
-  end)
-  map("<Leader>fg", lookupFilesFromGitRoot)
-  map("<Leader>fl", fzf.files)
-  map("<Leader>fb", fzf.buffers)
-  map("<Leader>fw", fzf.grep)
-  map("<Leader>fd", fzf.diagnostics_document)
+  end, "Find files in current dir in new tab")
+  map("<Leader>fg", lookupFilesFromGitRoot, "Find files from git root")
+  map("<Leader>fl", fzf.files, "Find files in current dir in the current tab")
+  map("<Leader>fb", fzf.buffers, "Find buffers")
+  map("<Leader>fw", fzf.grep, "Grep in files")
+  map("<Leader>fd", fzf.diagnostics_document, "Diagnostics in current file")
 end
 
 return {
