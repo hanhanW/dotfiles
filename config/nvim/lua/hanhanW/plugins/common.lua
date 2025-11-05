@@ -52,10 +52,4 @@ return {
     'itchyny/lightline.vim',
     event = 'VeryLazy',
   },
-  -- A plugin for aligning text in Vim.
-  {
-    'junegunn/vim-easy-align',
-    cmd = 'EasyAlign',
-    keys = { { '<Leader>a', '<Plug>(EasyAlign)', mode = { 'n', 'x' } } },
-  },
 }

@@ -27,7 +27,7 @@ local function lsp_on_attach(client, bufnr)
   map('n', ']g', function()
     vim.diagnostic.jump({ count = 1, float = true })
   end)
-  -- map('n', '<Leader>a', vim.lsp.buf.code_action)
+  map('n', '<Leader>a', vim.lsp.buf.code_action)
 
   map('n', '<Leader>gd', vim.lsp.buf.definition)
   map('n', '<Leader>gi', vim.lsp.buf.implementation)
