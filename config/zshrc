@@ -212,6 +212,7 @@ path=(
     $HOME/.rbenv/shims
     $HOME/.pyenv/bin
     $HOME/.pyenv/shims
+    $HOME/.opencode/bin
     /usr/local/bin
     /usr/local/sbin
     $path
