@@ -38,8 +38,8 @@ opt.ttimeoutlen = 20
 opt.showmode = true       -- Don't show mode since we use a statusline.
 opt.showcmd = true        -- Show (partial) command in the last line of the screen.
 
-opt.foldenable = true     -- Enable code folding.
-opt.foldmethod = "marker" -- Set fold method to marker.
+-- Fold settings are now managed by nvim-ufo plugin
+-- See config/nvim/lua/hanhanW/plugins/ufo.lua
 
 -- Prioritize lsp diagnostics over other sources like mhinz/vim-signify.
 vim.diagnostic.config({

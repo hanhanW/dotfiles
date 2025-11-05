@@ -74,6 +74,13 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 local function lsp_config()
   local capabilities = require('blink.cmp').get_lsp_capabilities()
+
+  -- Add folding capabilities for nvim-ufo
+  capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+  }
+
   vim.lsp.config('*', {
     capabilities = capabilities,
     root_markers = { '.git' },
