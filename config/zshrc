@@ -39,7 +39,7 @@ key[PageDown]=${terminfo[knp]}
 
 # EXPORT {{{
 
-export EDITOR=vim
+export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
@@ -246,6 +246,40 @@ ssh() {
     tmux rename-window "$*"
     command ssh "$@"
     tmux set-window-option automatic-rename "on" 1>/dev/null
+  fi
+}
+
+# Git navigation commands
+# cdr - Change directory to git root
+# cdb - Change directory to build (git_root/build)
+
+# Git root directory navigation
+cdr() {
+  local git_root
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [ -n "$git_root" ]; then
+    cd "$git_root"
+  else
+    echo "Error: Not in a git repository"
+    return 1
+  fi
+}
+
+# Build directory navigation
+cdb() {
+  local git_root
+  git_root=$(git rev-parse --show-toplevel 2>/dev/null)
+  if [ -z "$git_root" ]; then
+    echo "Error: Not in a git repository"
+    return 1
+  fi
+
+  local build_dir="${git_root}/build"
+  if [ -d "$build_dir" ]; then
+    cd "$build_dir"
+  else
+    echo "Error: Build directory not found at ${build_dir}"
+    return 1
   fi
 }
 
