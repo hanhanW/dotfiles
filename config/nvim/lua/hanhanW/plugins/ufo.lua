@@ -11,7 +11,7 @@ return {
       vim.o.foldenable = true
       vim.o.foldmethod = 'expr'
       vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
-      vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+      vim.o.fillchars = 'eob: ,fold: ,foldopen:▾,foldsep: ,foldclose:▸'
 
       -- Keymaps for folding
       vim.keymap.set('n', 'zR', require('ufo').openAllFolds, { desc = 'Open all folds' })
@@ -20,6 +20,10 @@ return {
       -- Setup ufo with treesitter and indent providers
       require('ufo').setup({
         provider_selector = function(bufnr, filetype, buftype)
+          -- Disable ufo for MLIR files (use custom mlir-fold plugin instead)
+          if filetype == 'mlir' then
+            return ''
+          end
           return { 'treesitter', 'indent' }
         end,
       })
