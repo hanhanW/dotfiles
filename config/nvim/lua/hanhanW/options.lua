@@ -35,7 +35,7 @@ opt.updatetime = 100
 opt.timeoutlen = 300
 opt.ttimeoutlen = 20
 
-opt.showmode = true       -- Don't show mode since we use a statusline.
+opt.showmode = false      -- Don't show mode since we use a statusline.
 opt.showcmd = true        -- Show (partial) command in the last line of the screen.
 
 -- Fold settings are now managed by nvim-ufo plugin
