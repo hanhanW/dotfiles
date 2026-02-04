@@ -213,6 +213,7 @@ path=(
     $HOME/.pyenv/bin
     $HOME/.pyenv/shims
     $HOME/.opencode/bin
+    $HOME/.local/bin
     /usr/local/bin
     /usr/local/sbin
     $path
@@ -255,6 +256,19 @@ ssh() {
 
 # Git root directory navigation
 cdr() {
+  # Check for help flag
+  if [ $# -ge 1 ] && [ "$1" = "--help" ]; then
+    echo "cdr - Change directory to git root"
+    echo ""
+    echo "Usage: cdr [--help]"
+    echo ""
+    echo "Navigates to the root directory of the current git repository."
+    echo ""
+    echo "Examples:"
+    echo "  cdr       # Go to git root from anywhere in the repo"
+    return 0
+  fi
+
   local git_root
   git_root=$(git rev-parse --show-toplevel 2>/dev/null)
   if [ -n "$git_root" ]; then
@@ -265,7 +279,7 @@ cdr() {
   fi
 }
 
-# Build directory navigation
+# Generic build directory navigation
 cdb() {
   local git_root
   git_root=$(git rev-parse --show-toplevel 2>/dev/null)
