@@ -1,12 +1,6 @@
-[submodule "modules/dotbot"]
-	path = modules/dotbot
-	url = https://github.com/anishathalye/dotbot
 [submodule "modules/vim-plug"]
 	path = modules/vim-plug
 	url = https://github.com/junegunn/vim-plug.git
-[submodule "modules/zsh-autosuggestionsg"]
-	path = modules/zsh-autosuggestions
-	url = https://github.com/zsh-users/zsh-autosuggestions
 [submodule "modules/zsh-autosuggestions"]
 	path = modules/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
