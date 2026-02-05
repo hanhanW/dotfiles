@@ -20,6 +20,7 @@ cd ~/dotfiles
 
 - **Shell**: zsh configuration
 - **Editors**: vim, neovim
+- **Terminal**: ghostty
 - **Tools**: tmux, git, gdb
 - **Scripts**: personal bin directory
 
@@ -41,6 +42,7 @@ cd ~/dotfiles
 ~/.vim/autoload/plug.vim → modules/vim-plug/plug.vim
 ~/.ycm_extra_conf.py → config/ycm_extra_conf.py
 ~/bin/common       → bin/
+~/.config/ghostty/config → config/ghostty
 ~/.tmux.conf       → config/tmux.conf
 ~/.gitconfig       → config/gitconfig
 ~/.gitignore_global → config/gitignore_global

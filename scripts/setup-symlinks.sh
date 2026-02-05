@@ -49,6 +49,7 @@ link config/ycm_extra_conf.py ~/.ycm_extra_conf.py
 
 # Tools
 link bin ~/bin/common
+link config/ghostty ~/.config/ghostty/config
 link config/tmux.conf ~/.tmux.conf
 link config/gitconfig ~/.gitconfig
 link config/gitignore_global ~/.gitignore_global

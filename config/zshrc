@@ -43,6 +43,7 @@ export EDITOR=nvim
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
+export GREP_COLOR='1;31'
 export GREP_COLORS="mt=$GREP_COLOR"
 export PAGER='less'
 export LESS='-R'
@@ -176,29 +177,8 @@ alias ....='cd ../..'
 alias ......='cd ../../..'
 
 # Git aliases
-git_branch() {
-  (command git symbolic-ref -q HEAD || command git name-rev --name-only --no-undefined --always HEAD) 2>/dev/null
-}
-
-alias g='git'
-alias ga='git add'
-alias gaa='git add --all'
-alias gb='git branch'
-alias gc='git commit -v'
-alias gca='git commit -a -v'
-alias gcb='git checkout -b'
-alias gcm='git checkout master'
 alias gco='git checkout'
 alias gd='git diff'
-alias gf='git fetch'
-alias gl='git pull origin $(git_branch)'
-alias glg='git log'
-alias gm='git merge'
-alias gmm='git merge master'
-alias gmv='git mv'
-alias gp='git push origin $(git_branch)'
-alias grm='git rm'
-alias gst='git status'
 
 # }}}
 
@@ -222,7 +202,7 @@ path=(
 rbenv() { eval "$(command rbenv init -)" && rbenv "$@"; }
 pyenv() { eval "$(command pyenv init -)" && pyenv "$@"; }
 
-try_source() { [[ -f $1 ]] && source $1; }
+try_source() { [[ -f "$1" ]] && source "$1"; }
 try_source ~/bin/common/ddb.sh
 try_source ~/.fzf.zsh
 try_source ~/dotfiles/modules/zsh-autosuggestions/zsh-autosuggestions.zsh
