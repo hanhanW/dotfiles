@@ -1,61 +1,20 @@
-local treesitter_langs = {
-  "c",
-  "cpp",
-  "css",
-  "html",
-  "javascript",
-  "json",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  "mlir",
-  "python",
-  "rust",
-  "ruby",
-  "styled",
-  "tablegen",
-  "typescript",
-  "vim",
-  "vimdoc",
-}
+-- Install parsers with :TSInstall <lang>
+-- Commonly used: c cpp lua python rust mlir tablegen gitcommit git_rebase
+-- markdown vim vimdoc json yaml bash cmake
 
 return {
   {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "master",
+    'nvim-treesitter/nvim-treesitter',
+    branch = 'main',
     lazy = false,
-    build = ":TSUpdate",
-
+    build = ':TSUpdate',
     config = function()
-      local configs = require("nvim-treesitter.configs")
-      configs.setup({
-        ensure_installed = treesitter_langs,
-        sync_install = false,
-        auto_install = true,
-        ignore_install = {},
-        modules = {},
-        highlight = { enable = true },
-        indent = { enable = true },
+      -- Enable treesitter highlighting for any filetype with a parser
+      vim.api.nvim_create_autocmd('FileType', {
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
       })
     end,
   },
-  -- TODO: Switch to main branch once mlir is fixed.
-  -- {
-  --  'nvim-treesitter/nvim-treesitter',
-  --  branch = 'main',
-  --  lazy = false,
-  --  build = ':TSUpdate',
-  --  config = function()
-  --    local configs = require('nvim-treesitter')
-  --    configs.setup({
-  --      ensure_installed = treesitter_langs,
-  --      sync_install = false,
-  --      auto_install = true,
-  --      ignore_install = {},
-  --      modules = {},
-  --      highlight = { enable = true },
-  --      indent = { enable = true },
-  --    })
-  --  end,
-  -- },
 }

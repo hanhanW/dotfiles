@@ -62,7 +62,7 @@ local function lsp_on_attach(client, bufnr)
   end
 end
 
-vim.lsp.set_log_level('trace')
+vim.lsp.set_log_level('warn')
 vim.api.nvim_create_autocmd('LspAttach', {
   group = vim.api.nvim_create_augroup('autocmd_lspconfig', {}),
   callback = function(args)
@@ -122,7 +122,7 @@ return {
   {
     'mason-org/mason-lspconfig.nvim',
     opts = {
-      ensure_installed = { 'clangd', 'lua_ls', 'rust_analyzer' },
+      ensure_installed = { 'clangd', 'lua_ls', 'pyright', 'ruff', 'rust_analyzer' },
     },
     dependencies = {
       {
