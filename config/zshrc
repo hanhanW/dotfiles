@@ -194,6 +194,7 @@ path=(
     $HOME/.pyenv/shims
     $HOME/.opencode/bin
     $HOME/.local/bin
+    $HOME/.local/share/nvim/mason/bin
     /usr/local/bin
     /usr/local/sbin
     $path
@@ -202,11 +203,15 @@ path=(
 rbenv() { eval "$(command rbenv init -)" && rbenv "$@"; }
 pyenv() { eval "$(command pyenv init -)" && pyenv "$@"; }
 
+# Derive DOTFILES path from this file's location (works through symlinks)
+_dotfiles="${${(%):-%x}:A:h:h}"
+
 try_source() { [[ -f "$1" ]] && source "$1"; }
 try_source ~/bin/common/ddb.sh
 try_source ~/.fzf.zsh
-try_source ~/dotfiles/modules/zsh-autosuggestions/zsh-autosuggestions.zsh
+try_source "$_dotfiles/modules/zsh-autosuggestions/zsh-autosuggestions.zsh"
 try_source ~/.zshrc_local
+unset _dotfiles
 
 # Colorful man pages
 man() {
