@@ -207,7 +207,6 @@ pyenv() { eval "$(command pyenv init -)" && pyenv "$@"; }
 _dotfiles="${${(%):-%x}:A:h:h}"
 
 try_source() { [[ -f "$1" ]] && source "$1"; }
-try_source ~/bin/common/ddb.sh
 try_source ~/.fzf.zsh
 try_source "$_dotfiles/modules/zsh-autosuggestions/zsh-autosuggestions.zsh"
 try_source ~/.zshrc_local
