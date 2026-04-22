@@ -65,8 +65,20 @@ export CCACHE_COMPRESSLEVEL="6"
 
 precmd() {
     psvar=()
-    local git_head=((../)#.git/HEAD([1]N))
-    [[ -n $git_head ]] && psvar[1]=${"$(< "$git_head")"##*/}
+    # Find the nearest .git (file or dir) walking up the tree.
+    # In a worktree, .git is a file with `gitdir: <path>` pointing to the
+    # real gitdir; otherwise it's a directory holding HEAD directly.
+    local git_marker=((../)#.git([1]NY1))
+    local head_file
+    if [[ -d $git_marker ]]; then
+        head_file=$git_marker/HEAD
+    elif [[ -f $git_marker ]]; then
+        # Quotes are required: pattern `gitdir: ` contains a space, which
+        # zsh would otherwise split as a word boundary, leaving the prefix
+        # un-stripped.
+        head_file="${$(< $git_marker)#gitdir: }/HEAD"
+    fi
+    [[ -n $head_file && -f $head_file ]] && psvar[1]=${"$(< $head_file)"##*/}
 }
 
 
