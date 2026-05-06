@@ -32,6 +32,7 @@ cd ~/dotfiles
 | `scripts/setup-symlinks.sh` | Create all dotfile symlinks |
 | `scripts/setup-packages.sh` | Install apt packages (optional, requires sudo) |
 | `scripts/setup-languages.sh` | Install pyenv (optional, no admin) |
+| `scripts/setup-cli-tools.sh` | Install user-local CLI tools — currently `br` (beads issue tracker) |
 
 ## Symlinks Created
 
