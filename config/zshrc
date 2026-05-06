@@ -81,11 +81,17 @@ precmd() {
     [[ -n $head_file && -f $head_file ]] && psvar[1]=${"$(< $head_file)"##*/}
 }
 
+# Sandy yellow hostname when inside a sandbox/container.
+if [[ -f /.dockerenv || -n "$container" || -n "$IREE_SANDBOX" ]]; then
+    _hostcolor=214
+else
+    _hostcolor=135
+fi
 
 PS1=""
 PS1+='%{%F{118}%}[%*] '
 PS1+='%F{81}%n%f'
-PS1+=' at %F{135}%m%f'
+PS1+=" at %F{${_hostcolor}}%m%f"
 PS1+=' in %F{226}%~%f'
 PS1+='%(1V. %F{243}%1v%f.)'
 PS1+='%(2V. %F{180}%2v%f.)'
