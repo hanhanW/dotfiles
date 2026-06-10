@@ -29,6 +29,7 @@ cd ~/dotfiles
 | Script | Description |
 |--------|-------------|
 | `install.sh` | Main installer (symlinks only by default) |
+| `uninstall.sh` | Remove dotfile symlinks and user-local `br`/beads |
 | `scripts/setup-symlinks.sh` | Create all dotfile symlinks |
 | `scripts/setup-packages.sh` | Install apt packages (optional, requires sudo) |
 | `scripts/setup-languages.sh` | Install pyenv (optional, no admin) |
