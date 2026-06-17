@@ -21,7 +21,7 @@ cd ~/dotfiles
 - **Shell**: zsh configuration
 - **Editors**: vim, neovim
 - **Terminal**: ghostty
-- **Tools**: tmux, git, gdb
+- **Tools**: tmux, git, gdb, ripgrep
 - **Scripts**: personal bin directory
 
 ## Scripts
@@ -29,11 +29,11 @@ cd ~/dotfiles
 | Script | Description |
 |--------|-------------|
 | `install.sh` | Main installer (symlinks only by default) |
-| `uninstall.sh` | Remove dotfile symlinks and user-local `br`/beads |
+| `uninstall.sh` | Remove dotfile symlinks and user-local tools installed by this repo |
 | `scripts/setup-symlinks.sh` | Create all dotfile symlinks |
 | `scripts/setup-packages.sh` | Install apt packages (optional, requires sudo) |
 | `scripts/setup-languages.sh` | Install pyenv (optional, no admin) |
-| `scripts/setup-cli-tools.sh` | Install user-local CLI tools — currently `br` (beads issue tracker) |
+| `scripts/setup-cli-tools.sh` | Install user-local CLI tools — `br` (beads issue tracker) and `rg` (ripgrep) |
 
 ## Symlinks Created
 

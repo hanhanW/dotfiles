@@ -38,8 +38,8 @@ if ask "Install pyenv for Python version management?"; then
     echo ""
 fi
 
-# Optional: user-local CLI tools (br, etc.)
-if ask "Install user-local CLI tools (br/beads)?"; then
+# Optional: user-local CLI tools (br, rg, etc.)
+if ask "Install user-local CLI tools (br/beads, rg)?"; then
     "$DOTFILES_DIR/scripts/setup-cli-tools.sh"
     echo ""
 fi

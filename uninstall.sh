@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Remove symlinks created by the dotfiles installer - no admin required
+# Remove symlinks and user-local tools created by the dotfiles installer
+# No admin required
 set -e
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -102,6 +103,37 @@ remove_beads() {
     fi
 }
 
+remove_ripgrep() {
+    local marker="${XDG_STATE_HOME:-$HOME/.local/state}/dotfiles/rg-installed"
+    local bin="${LOCAL_BIN_DIR:-$HOME/.local/bin}/rg"
+    local marked_bin
+
+    if [[ ! -f "$marker" ]]; then
+        info "rg install marker not found; leaving rg untouched"
+        return
+    fi
+
+    marked_bin="$(sed -n '1p' "$marker" 2>/dev/null || true)"
+    if [[ -n "$marked_bin" ]]; then
+        bin="$marked_bin"
+    fi
+
+    if ! is_under_home "$bin"; then
+        warn "Skipping rg install path outside HOME: $bin"
+        return
+    fi
+
+    if [[ -e "$bin" || -L "$bin" ]]; then
+        rm -f "$bin"
+        info "Removed rg: $bin"
+    else
+        info "rg not found at: $bin"
+    fi
+
+    rm -f "$marker"
+    hash -r 2>/dev/null || true
+}
+
 echo "=== Dotfiles Uninstaller ==="
 echo ""
 
@@ -125,8 +157,9 @@ unlink_dotfile config/gdb "$HOME/.gdb"
 unlink_dotfile config/pryrc "$HOME/.pryrc"
 
 echo ""
-info "Removing beads CLI tool..."
+info "Removing user-local CLI tools..."
 remove_beads
+remove_ripgrep
 
 echo ""
 info "Uninstall complete!"
